@@ -1,0 +1,1 @@
+{"version":3,"file":"OnboardingScreen.d.ts","sourceRoot":"","sources":["../../../src/renderer/components/OnboardingScreen.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAmB,MAAM,OAAO,CAAC;AAExC,OAAO,0BAA0B,CAAC;AAElC,UAAU,qBAAqB;IAC7B,UAAU,EAAE,MAAM,IAAI,CAAC;CACxB;AAED,QAAA,MAAM,gBAAgB,EAAE,KAAK,CAAC,EAAE,CAAC,qBAAqB,CA+HrD,CAAC;AAEF,eAAe,gBAAgB,CAAC"}

@@ -1,0 +1,91 @@
+{
+  "name": "disdian",
+  "version": "1.0.0",
+  "description": "Obsidian-like note-taking app with Discord RPC integration",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "start": "webpack --config webpack.main.config.js && concurrently \"webpack --config webpack.renderer.config.js --watch\" \"electron .\"",
+    "dev": "concurrently \"webpack --config webpack.main.config.js --watch\" \"webpack --config webpack.renderer.config.js --watch\" \"wait-on dist/main/main.js && electron .\"",
+    "build": "webpack --config webpack.main.config.js && webpack --config webpack.renderer.config.js --mode production",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "keywords": [
+    "electron",
+    "obsidian",
+    "notes",
+    "discord",
+    "markdown"
+  ],
+  "author": "Disdian Team",
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "date-fns": "^2.30.0",
+    "discord-rpc": "^4.0.1",
+    "framer-motion": "^12.23.24",
+    "highlight.js": "^11.9.0",
+    "lucide-react": "^0.263.1",
+    "markdown-it": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^13.0.7",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.21",
+    "bootstrap": "^5.3.8",
+    "concurrently": "^8.2.2",
+    "css-loader": "^6.10.0",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "foundation-sites": "^6.9.0",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^4.1.15",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "wait-on": "^7.2.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.disdian.app",
+    "productName": "Disdian",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "public/icon.png",
+      "category": "Utility"
+    }
+  }
+}

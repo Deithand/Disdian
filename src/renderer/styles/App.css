@@ -1,0 +1,45 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-primary);
+}
+
+.app-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.no-note-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 60px 40px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.no-note-selected h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.no-note-selected p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}

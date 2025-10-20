@@ -1,0 +1,87 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 24px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  -webkit-app-region: drag;
+  z-index: 100;
+}
+
+.toolbar-left,
+.toolbar-center,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.toolbar-center {
+  flex: 1;
+  justify-content: center;
+}
+
+.app-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  transition: all var(--transition);
+  position: relative;
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  transform: scale(1.05);
+}
+
+.toolbar-btn:active {
+  transform: scale(0.98);
+}
+
+.toolbar-btn.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+.toolbar-btn.active:hover {
+  background: var(--gray-800);
+}
+
+/* Тултипы для кнопок */
+.toolbar-btn::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--black);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition);
+  z-index: 1000;
+}
+
+.toolbar-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(12px);
+}
