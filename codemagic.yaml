@@ -1,0 +1,74 @@
+workflows:
+
+  build-macos:
+    name: Build macOS (dmg)
+    # mac-сборки требуют mac-хоста / self-hosted runner или mac-инстанс в Codemagic
+    instance_type: mac_mini
+    max_build_duration: 120
+    cache:
+      - ~/.npm
+      - node_modules
+    environment:
+      node: 18
+      vars:
+        NODE_ENV: production
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm ci
+      - name: Build (production)
+        script: |
+          NODE_ENV=production npm run build
+      - name: Package (mac)
+        script: |
+          npx electron-builder --mac --publish=never
+    artifacts:
+      - release/**
+
+  build-windows:
+    name: Build Windows (NSIS)
+    instance_type: windows_standard
+    max_build_duration: 90
+    cache:
+      - ~/.npm
+      - node_modules
+    environment:
+      node: 18
+      vars:
+        NODE_ENV: production
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm ci
+      - name: Build (production)
+        script: |
+          NODE_ENV=production npm run build
+      - name: Package (win)
+        script: |
+          npx electron-builder --win nsis --publish=never
+    artifacts:
+      - release/**
+
+  build-linux:
+    name: Build Linux (AppImage / deb)
+    instance_type: linux_standard
+    max_build_duration: 60
+    cache:
+      - ~/.npm
+      - node_modules
+    environment:
+      node: 18
+      vars:
+        NODE_ENV: production
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm ci
+      - name: Build (production)
+        script: |
+          NODE_ENV=production npm run build
+      - name: Package (linux)
+        script: |
+          npx electron-builder --linux --publish=never
+    artifacts:
+      - release/**
